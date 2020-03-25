@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home";
 
 Vue.use(VueRouter);
+
+const linkExactActiveClass = "vue-school-active-class";
 
 const routes = [
   {
@@ -11,46 +13,18 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/details/:id",
+    name: "DestinationDetails",
     component: function() {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    }
-  },
-  {
-    path: "/brazil",
-    name: "Brazil",
-    component: function() {
-      return import(/* webpackChunkName: "brazil" */ "../views/Brazil.vue");
-    }
-  },
-  {
-    path: "/hawaii",
-    name: "Hawaii",
-    component: function() {
-      return import(/* webpackChunkName: "hawaii" */ "../views/Hawaii.vue");
-    }
-  },
-  {
-    path: "/jamaica",
-    name: "Jamaica",
-    component: function() {
-      return import(/* webpackChunkName: "jamaica" */ "../views/Jamaica.vue");
-    }
-  },
-  {
-    path: "/panama",
-    name: "Panama",
-    component: function() {
-      return import(/* webpackChunkName: "panama" */ "../views/Panama.vue");
+      return import(
+        /* webpackChunkName: "destinationDetails" */ "../views/DestinationDetails"
+      );
     }
   }
 ];
 
 const router = new VueRouter({
+  linkExactActiveClass,
   routes
 });
 
