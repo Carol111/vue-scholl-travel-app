@@ -48,6 +48,23 @@ const routes = [
     }
   },
   {
+    path: "/user",
+    name: "user",
+    component: function() {
+      return import(/* webpackChunkName: "user" */ "../views/User");
+    },
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: function() {
+      return import(/* webpackChunkName: "login" */ "../views/Login");
+    }
+  },
+  {
     path: "404",
     alias: "*",
     name: "notFound",
@@ -61,7 +78,7 @@ const router = new VueRouter({
   mode,
   linkExactActiveClass,
   routes,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     } else {
@@ -77,6 +94,20 @@ const router = new VueRouter({
         return false;
       }
     }
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.user) {
+      next({
+        name: "login"
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
   }
 });
 
