@@ -16,14 +16,26 @@ const routes = [
     props: true
   },
   {
-    path: "/details/:slug",
+    path: "/destination/:slug",
     name: "DestinationDetails",
     props: true,
     component: function() {
       return import(
         /* webpackChunkName: "destinationDetails" */ "../views/DestinationDetails"
       );
-    }
+    },
+    children: [
+      {
+        path: ":experienceSlug",
+        name: "experienceDetails",
+        props: true,
+        component: function() {
+          return import(
+            /* webpackChunkName: "experienceDetails" */ "../views/ExperienceDetails"
+          );
+        }
+      }
+    ]
   }
 ];
 
