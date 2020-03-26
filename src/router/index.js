@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -11,7 +12,7 @@ const linkExactActiveClass = "vue-school-active-class";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
     props: true
   },
@@ -35,7 +36,25 @@ const routes = [
           );
         }
       }
-    ]
+    ],
+    beforeEnter: (to, from, next) => {
+      const exists = store.destinations.find(
+        destination => destination.slug === to.params.slug
+      );
+      if (exists) {
+        next();
+      } else {
+        next({ name: "notFound" });
+      }
+    }
+  },
+  {
+    path: "404",
+    alias: "*",
+    name: "notFound",
+    component: function() {
+      return import(/* webpackChunkName: "notFound" */ "../views/NotFound");
+    }
   }
 ];
 
