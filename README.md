@@ -1,5 +1,5 @@
 # vue-school-travel-app
-Course: Vue Router for Everyone (https://vueschool.io/courses/vue-router-for-everyone)
+Course: [Vue Router for Everyone](https://vueschool.io/courses/vue-router-for-everyone)
 
 ## Project setup
 ```
