@@ -1,4 +1,6 @@
-# vue-school-travel-app
+[Vue travel app](https://imgur.com/FyXl7eh)
+
+# Vue Travel App
 Course: [Vue Router for Everyone](https://vueschool.io/courses/vue-router-for-everyone)
 
 ## Project setup
