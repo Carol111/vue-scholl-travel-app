@@ -1,4 +1,4 @@
-[Vue travel app](https://imgur.com/FyXl7eh)
+![Vue travel app](https://imgur.com/FyXl7eh.png)
 
 # Vue Travel App
 Course: [Vue Router for Everyone](https://vueschool.io/courses/vue-router-for-everyone)
